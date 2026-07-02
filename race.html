@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rexburg F4</title>
+</head>
+<body>
+    <header>
+        <h4>Menu</h4>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="tracks.html">Tracks</a>
+            <a href="race.html">Race</a>
+        </nav>
+    </header>
+    <div id="title">
+        <img src="images/R4_Race_Hero.jpg" alt="logo">
+        <h1>Race</h1>
+    </div>
+    <main>
+        <div id="subscribe">
+            <h1>Paddock Plans</h1>
+            <h2>Subscribe today and get access to real FIA tracks and open wheeled racecars.</h2>
+            <div class="plan-controls">
+                <div class="toggle-buttons">
+                    <button id="monthlyBtn" class="active">Monthly</button>
+                    <button id="yearlyBtn">Yearly</button>
+                </div>
+            </div>
+            <div class="plans">
+                <section class="plan">
+                    <h3>Stroll Tier</h3>
+                    <h2 class="price" data-monthly="10" data-yearly="100">$10</h2>
+                    <ul>
+                        <li>Detuned Engines</li>
+                        <li>Access to Silverstone</li>
+                        <li>15 track hours/week</li>
+                        <li>Basic garage Access</li>
+                    </ul>
+                </section>
+                <section class="plan">
+                    <h3>Ferrari Strategy</h3>
+                    <h2 class="price" data-monthly="99" data-yearly="900">$99</h2>
+                    <ul>
+                        <li>Max power engines</li>
+                        <li>Access to both tracks</li>
+                        <li>30 track hours/week</li>
+                        <li>Full garage Access</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <h4>&copy; 2024 Your Website. All rights reserved.</h4>
+        <h4>Privacy Policy</h4>
+        <h4>Terms of Service</h4>
+    </footer>
+    <!--I did not know how to do the toggle button so this is a little help from AI-->
+    <script>
+    (function(){
+      var monthlyBtn = document.getElementById('monthlyBtn');
+      var yearlyBtn = document.getElementById('yearlyBtn');
+      var prices = document.querySelectorAll('.price');
+      prices.forEach(function(p){
+        p.dataset.yearly = p.dataset.yearly || 0;
+      });
+      function setMode(mode){
+        if(mode==='monthly'){
+          monthlyBtn.classList.add('active');
+          yearlyBtn.classList.remove('active');
+          prices.forEach(function(p){ p.textContent = '$' + p.dataset.monthly; });
+        } else {
+          monthlyBtn.classList.remove('active');
+          yearlyBtn.classList.add('active');
+          prices.forEach(function(p){ p.textContent = '$' + p.dataset.yearly; });
+        }
+      }
+      monthlyBtn.addEventListener('click', function(){ setMode('monthly'); });
+      yearlyBtn.addEventListener('click', function(){ setMode('yearly'); });
+      setMode('monthly');
+    })();
+    </script>
+</body>
+</html>
